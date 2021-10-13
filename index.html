@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hungry HONGKONG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<style>
+	body{
+		background-color: lightgray;
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+
+		.container{
+			height: 100vh;
+			display: flex;
+			flex-direction: column-reverse;
+			justify-content: center;
+			align-items: center;
+
+
+		}
+
+		.titleimg{
+			width: 700px;
+			position: relative;
+			bottom: 90px;
+			z-index: 9;
+		}
+
+		#titlebtn{
+			width: 180px;
+			position: relative;
+			left: 20px;
+			bottom: 80px;
+			z-index: 9;
+
+		}
+
+		.talkme{
+			width: 770px;
+			position: relative;
+			right: 10px;
+			top: 10px;
+			z-index: 9;
+		}
+
+		.talkyou{
+			width: 770px;
+			position: relative;
+			left: 10px;
+			top: 40px;
+			z-index: 9;
+		}
+
+		.talk{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			z-index: 9;
+		}
+
+		#songmText{z-index: 9; position: absolute; left: 300px; bottom: 440px; font-size: 1.7em; color: white; text-align: center;}
+
+		.flower{position: absolute; left: 0; top: 0;}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="talk">
+		<img class="talkme" src="me.png">
+		<img class="talkyou" src="you.png">
+	</div>
+	<div class="titles">
+		<img class="titleimg" src="title.png">	
+		<img id="titlebtn" src="before.png">
+		<audio id="hongkong" src="hongkong.mp3"></audio>
+	</div>
+</div>
+<div id="songmText"></div>
+<script type="text/javascript">
+		
+
+		var myTimer;
+		var musicon = false;
+
+		titlebtn.onclick = function(){
+		if(musicon){
+			titlebtn.src = "before.png";
+			hongkong.pause();
+			musicon = false;
+		}
+		else{
+			titlebtn.src = "after.png";
+			hongkong.play();
+			musicon = true;
+			myTimer = setInterval(print,2700);
+		}
+	}
+
+	var songm = "여보세요<br>홍콩반점이죠<br>여기 풍림 1차 908혼데여<br>풍림 1차 908호요<br>동 하나예요ㅋㅋ<br>동 하나예요<br>908호<br>아저씨 단무지가 안와서요<br>젓가락도 안왔는데<br>나무젓가락<br>허 우리집에 젓가락 없는데 ㅋㅋ;<br>좀 갖다주시면 안돼요?<br>그럼 짜장면 환불 안돼요?<br>왜요; 환불 안되는게 어딨어요<br>    <br>짜장은 간짜장<br>돈 좀 있음 삼선짜장<br> 술먹은 다음날엔 고추짬뽕이죠 <br>변덕스러운 짱개유져 땜에 나온<br>짬짜면 볶짜면 탕짜면 볶짬면 탕짬면<br>탕볶밥 안먹어봤고<br>앞으로 안먹을 밥~<br> 세트메뉴에는 만두가 오죠<br>비 내리면 따끈한 우동이 땡기고 <br>안 땡기는건 마파두부덮밥 <br> 아저씨 단무지 두배로 줘요<br> 양파는 조금 탕수육에 곱배긴 자만 특정식은 부르주아만<br>골목길~~~<br>";
+
+	var songmArr = songm.split("<br>");
+
+	var s=0;
+	function print(){
+		songmText.innerHTML = songmArr[s] + " ";
+		s++;
+		if(s == songmArr.length){
+			clearInterval(myTimer);
+		}
+	}
+
+	var a = ["plz", "plz", "plz"];
+
+	for(var i=0; i<30; i++){
+		var t = document.createElement("img");
+		t.src = a[randomBH(0,2)] + ".png"
+		t.className = "flower";
+		t.style.width = randomBH(200,400) + "px";
+		t.style.height = "auto";
+		t.style.left = Math.random()*screen.availWidth + "px";
+		t.style.top = Math.random()*screen.availHeight+ "px";
+		document.body.appendChild(t);
+	}
+
+	function randomBH(min,max){
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random()*(max-min+1)) + min;
+	}
+		
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
